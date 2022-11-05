@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.7.0 <0.9.0;
+contract v{
+    // address payable public get=payable(0x617F2E2fD72FD9D5503197092aC168c91465E7f2);
+    receive() external payable{}
+    function d() public payable {}
+    function checkbalance() public view returns (uint){
+        return address(this).balance;
+    }   
+    function SEND(address payable getter) public{
+        bool sent=getter.send(1);
+        require(sent,"transaction is failed");
+    }
+    function TRANSFER(address payable getter) public{
+        getter.transfer(1);
+    }
+    function CALL(address payable getter) public {
+        (bool sent,) = getter.call{value:1}("");
+        require(sent,"tran fail");
+    }
+}
+
+
+
+
